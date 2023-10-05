@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>digital-garden - ["Programming"</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <meta name="author" content="ardms" />
+        <meta name="copyright" content="ardms" />
+        <meta name="robots" content="noindex,follow">
+
+        <link rel="stylesheet" href="/theme/css/main.css" type="text/css" />
+
+        <!--[if IE]>
+                <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+        <!--[if lte IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="/css/ie.css"/>
+                <script src="/js/IE8.js" type="text/javascript"></script><![endif]-->
+
+        <!--[if lt IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="/css/ie6.css"/><![endif]-->
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="">digital-garden </a></h1>
+                <nav>
+                    <a href="/category/misc.html">misc</a>&nbsp;
+                </nav>
+        </header><!-- /#banner -->
+        
+        
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/sway-setup.html">"sway-setup"</a></h1> 
+<footer class="post-info">
+        <abbr class="published" title="2022-12-16T00:00:00+00:00">
+                Fri 16 December 2022
+        </abbr>
+<p>tags: <a href="/tag/programming.html">["Programming"</a><a href="/tag/linux.html">"Linux"</a><a href="/tag/notes.html">"Notes"]</a></p></footer><!-- /.post-info --><h1>Sway configuration</h1>
+<h2>Configure keyboard language</h2>
+<p>Get all available input devices with <code>swaymsg -t get_inputs</code>.</p>
+<p>Find the keyboard and then use this to change the sway configuration to desired language
+if needed as shown under:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">input</span><span class="w"> </span><span class="s">&quot;type:keyboard&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">xkb_layout</span><span class="w"> </span><span class="nx">gb</span><span class="w"> </span>
+<span class="w">    </span><span class="nx">xkb_options</span><span class="w"> </span><span class="nx">grp</span><span class="p">:</span><span class="nx">alt_shift_tonggle</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div>
+
+<p>See <code>man 7 xkeyboard-config</code> for options you can use with <code>xkb_layout</code></p>
+<h2>Configure application launcher</h2>
+<p>For now I use <a href="https://hg.sr.ht/~scoopta/wofi">wofi</a>.
+For installation see link above. In addition you need to install <em>Mercurial</em> with
+<code>sudo apt install mercurial</code></p>
+<p>Configuration is simple for now just add <code>bindsym $mod+d exec wofi --show=run</code></p>
+<h2>Configure WiFi</h2>
+<p>Not yet configures, use Ethernet. </p>
+<p>I was misisng wifi card firmware that was identified by:
+<code>sudo dmesg | grep iwlwifi</code></p>
+<p>This identified that firmware __iwlwifi-7260-17.ucode` was missing</p>
+<p>Cloning the missing git repository as indicated in <code>dmesg</code> and copying the <strong>ucode</strong>
+file in <code>/lib/firmware/</code> directory. Reboring showed that wifi card has been identified</p>
+<p>Scan for available WiFi neworks with <code>nmcli dev wifi list</code></p>
+<p>Scan with <code>sudo iwlist scan</code> </p>
+<p>Manually change fine in <code>/etc/network/interfaces</code> to add </p>
+<h1>Configure terminal</h1>
+<p><em>foot</em> is the default terminal </p>
+<h1>Battery life info</h1>
+<p>This can be found in <code>/sys/class/power_supply/BAT0/capacity</code></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+        
+
+ 
+            <li><article class="hentry">    
+                <header>
+                    <h3><a href="/vim-notes.html" rel="bookmark"
+                           title="Permalink to "Vim notes"">"Vim notes"</a></h3>
+                </header>
+                
+                <div class="entry-content">
+                <h1>General notes along the way for Vim usage</h1>
+<h2>Difference checking</h2>
+<p>If you want to check two files for differences in a vertical split </p>
+<div class="highlight"><pre><span></span><code>vertical diffsplit file1 file2
+</code></pre></div>
+
+<p>Then when you would like to change transfer changes of one file to the other <code>diffget</code> 
+or depending on which window you would …</p>
+                <a class="readmore" href="/vim-notes.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                     Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>. Theme is using <a href="https://github.com/getpelican/pelican-themes" target="_blank">cebong</a>.
+                </address><!-- /#about -->
+
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>"home-assistance-raspberryPi"</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <meta name="keywords" content="['personal progects'], misc" />
+        <meta name="category" content="misc" />
+        <meta name="description" content="Home assistance installation Summary I thought this would be easier. I have an old raspberryPi 3 that I use for several tasks like having a network printer with CUPS having a small display to show weather and bus times. Because of that I didn't want to flash the Home Assisntant …" />
+        <meta name="author" content="ardms" />
+        <meta name="copyright" content="ardms" />
+        <meta name="date" content="2023-09-16 00:00:00+01:00">
+        <meta name="robots" content="index,follow">
+
+        <link rel="stylesheet" href="/theme/css/main.css" type="text/css" />
+
+        <!--[if IE]>
+                <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+        <!--[if lte IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="/css/ie.css"/>
+                <script src="/js/IE8.js" type="text/javascript"></script><![endif]-->
+
+        <!--[if lt IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="/css/ie6.css"/><![endif]-->
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="">digital-garden </a></h1>
+                <nav>
+                    <a href="/category/misc.html">misc</a>&nbsp;
+                </nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="home-assistance-raspberrypi.html" rel="bookmark"
+           title="Permalink to "home-assistance-raspberryPi"">"home-assistance-raspberryPi"</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-09-16T00:00:00+01:00">
+                Sat 16 September 2023
+        </abbr>
+<p>tags: <a href="/tag/personal-progects.html">['personal progects']</a></p></footer><!-- /.post-info -->      <h1>Home assistance installation</h1>
+<h2>Summary</h2>
+<p>I thought this would be easier. I have an old raspberryPi 3 that I use for several tasks like having a network printer with <a href="https://www.cups.org/">CUPS</a> having a small display to show weather and bus times. Because of that I didn't want to flash the <a href="https://www.home-assistant.io/installation/raspberrypi">Home Assisntant Operating System</a> but rather an instance of Home Assistant that would run in a container inside the <a href="https://www.raspberrypi.com/software/operating-systems/">Raspberry Pi OS Lite </a>. </p>
+<p>I first followed the instructions and installed Home Assistant Container only to find out that this is not what I wanted since it is not allowing you to install add-ons so after looking into the <a href="https://www.home-assistant.io/installation/">guide</a> I understood that what I needed was <a href="https://community.home-assistant.io/t/installing-home-assistant-supervised-on-a-raspberry-pi-using-debian-12/247116">Home Assistant Supervised</a></p>
+<h2>Docker installation</h2>
+<p><code>curl -sSL https://get.docker.com | sh</code></p>
+<p><code>sudo usermod -aG docker $USER</code></p>
+<h2>Install OS Agent and Dependencies</h2>
+<p>First install dependencies</p>
+<p><code>sudo apt install apparmor jq wget curl udisks2 libglib2.0-bin network-manager
+dbus lsb-release systemd-journal-remote systemd-resolved -y</code></p>
+<p>Then install os-agent <em>note the version</em></p>
+<div class="highlight"><pre><span></span><code><span class="n">wget</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">home</span><span class="o">-</span><span class="n">assistant</span><span class="o">/</span><span class="n">os</span><span class="o">-</span><span class="n">agent</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="mf">1.6</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="n">os</span><span class="o">-</span><span class="n">agent_1</span><span class="o">.</span><span class="mf">6.0</span><span class="n">_linux_aarch64</span><span class="o">.</span><span class="n">deb</span>
+
+<span class="n">sudo</span><span class="w"> </span><span class="n">dpkg</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="n">os</span><span class="o">-</span><span class="n">agent_1</span><span class="o">.</span><span class="mf">6.0</span><span class="n">_linux_aarch64</span><span class="o">.</span><span class="n">deb</span>
+</code></pre></div>
+
+<h2>Install Home Assistant Supervised</h2>
+<div class="highlight"><pre><span></span><code><span class="n">wget</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">home</span><span class="o">-</span><span class="n">assistant</span><span class="o">/</span><span class="n">supervised</span><span class="o">-</span><span class="n">installer</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">latest</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">homeassistant</span><span class="o">-</span><span class="n">supervised</span><span class="o">.</span><span class="n">deb</span>
+
+<span class="n">sudo</span><span class="w"> </span><span class="n">dpkg</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="n">homeassistant</span><span class="o">-</span><span class="n">supervised</span><span class="o">.</span><span class="n">deb</span><span class="w"> </span>
+</code></pre></div>
+
+<p>If there are any issues with installation you can try </p>
+<p><code>ha jobs options --ignore-conditions healthy</code></p>
+<p>Once the above is completed you should be able to connect to home assistance instance at:</p>
+<p><code>http://&lt;host&gt;:8123</code></p>
+<h1>Home assistance setup</h1>
+<h2>Set up electricity smart meter readings</h2>
+<ul>
+<li>Setting up an account – First you’ll need to setup an account with the only
+DCC authorised agent, “Glow”. There is no easy way to do this on desktop –
+so you’ll need to download the “Bright” app for either iOS or Android. Once
+you’ve downloaded the app, go through the sign up process (you’ll need your
+details) and provide your meter details from your IHD. You should start
+seeing readings appear instantly in the app. </li>
+<li>Setup the Home Assistant
+Integration – The plugin I recommend is HandyHat’s integration available on
+<a href="https://github.com/HandyHat/ha-hildebrandglow-dcc">GitHub</a>. You can follow his instructions for automated installation via
+HACS, but I prefer the manual method, so download the files and drop them
+in your config directory (I recommend using the Samba plugin to achieve
+this).</li>
+<li>Setup the integration – Here’s the easy bit – create a new integration and
+select the “Hildebrand Glow (DCC)” integration, enter your glow details from
+step 1 – and your energy usage should now be available in Home Assistant!</li>
+</ul>
+<h2>Set up Local Bytes Smart Plug</h2>
+<ul>
+<li>First you need to install <a href="https://github.com/home-assistant/addons/blob/master/mosquitto/DOCS.md">MQTT broker</a>. Follow instruction on github account</li>
+<li>Then you need to install <a href="https://www.home-assistant.io/integrations/mqtt/">MQTT</a>.</li>
+<li>Last you need to install <a href="https://www.home-assistant.io/integrations/tasmota/">TASMOTA</a></li>
+</ul>
+<h3>Configure Smart Plug by:</h3>
+<ul>
+<li>Power on the device. This may be plugging it in to the wall, or turning on a light switch.</li>
+<li>Open the Wi-Fi settings on your Mobile Device/Computer.</li>
+<li>Wait until you see a Wi-Fi network that starts with tasmota, join it. Eg "tasmota-ebaec4"</li>
+<li>Either open a browser to 192.168.4.1, or click on the "Sign in to this network" prompt.</li>
+<li>You'll be presented with a list of Wi-Fi networks, select yours and type in the password.</li>
+<li>Take note of the IP address that you are presented with.</li>
+<li>Your browser should automatically redirect to the devices new IP address.</li>
+<li>Click "Configure Other" and update the Device Name &amp; Friendly Name 1, then click save.</li>
+<li>We recommend using the same name value for both</li>
+<li>Click "Configure MQTT" and fill in the following details:</li>
+<li>Host - The IP address of you MQTT instance. (Starting on Tasmota 12.1.1, you can use homeassistant.local).</li>
+<li>Client - This must be unique for the user. The default value will work.</li>
+<li>User - Use the user you previously created.</li>
+<li>Password - Use the password you previously created.</li>
+<li>Click Save</li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                     Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>. Theme is using <a href="https://github.com/getpelican/pelican-themes" target="_blank">cebong</a>.
+                </address><!-- /#about -->
+
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

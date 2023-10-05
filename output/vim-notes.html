@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>"Vim notes"</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <meta name="keywords" content="["Programming", "vim", "Notes"], misc" />
+        <meta name="category" content="misc" />
+        <meta name="description" content="General notes along the way for Vim usage Difference checking If you want to check two files for differences in a vertical split vertical diffsplit file1 file2 Then when you would like to change transfer changes of one file to the other diffget or depending on which window you would …" />
+        <meta name="author" content="ardms" />
+        <meta name="copyright" content="ardms" />
+        <meta name="date" content="2022-08-16 00:00:00+01:00">
+        <meta name="robots" content="index,follow">
+
+        <link rel="stylesheet" href="/theme/css/main.css" type="text/css" />
+
+        <!--[if IE]>
+                <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+        <!--[if lte IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="/css/ie.css"/>
+                <script src="/js/IE8.js" type="text/javascript"></script><![endif]-->
+
+        <!--[if lt IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="/css/ie6.css"/><![endif]-->
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="">digital-garden </a></h1>
+                <nav>
+                    <a href="/category/misc.html">misc</a>&nbsp;
+                </nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="vim-notes.html" rel="bookmark"
+           title="Permalink to "Vim notes"">"Vim notes"</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2022-08-16T00:00:00+01:00">
+                Tue 16 August 2022
+        </abbr>
+<p>tags: <a href="/tag/programming.html">["Programming"</a><a href="/tag/vim.html">"vim"</a><a href="/tag/notes.html">"Notes"]</a></p></footer><!-- /.post-info -->      <h1>General notes along the way for Vim usage</h1>
+<h2>Difference checking</h2>
+<p>If you want to check two files for differences in a vertical split </p>
+<div class="highlight"><pre><span></span><code>vertical diffsplit file1 file2
+</code></pre></div>
+
+<p>Then when you would like to change transfer changes of one file to the other <code>diffget</code> 
+or depending on which window you would like to move the change <code>diffput</code></p>
+<h2>Spelling</h2>
+<p>To enable you start with <code>set:spell</code> to navigate through spell errors <code>]s</code> and <code>[s</code> finally to see options and change use <code>z=</code></p>
+<h2>grep and search in files</h2>
+<p>Use <code>vim text_to_search dir</code> use <code>**/</code> to search in all directories and subdirectories except those exclude by wildignore in the <strong>vimrc</strong> file</p>
+<h2>Installing in Linux or WLS</h2>
+<ol>
+<li>git clone https://github.com/vim/vim.git</li>
+<li>cd vim/src</li>
+<li>./configure --enable-python3interp=dynamic  --with-features=huge</li>
+<li>If needed also use <code>--with-python3-config-dir=~/</code></li>
+<li>sudo make</li>
+<li>sudo make install</li>
+</ol>
+<h2>Copy from windows clipboard to WLS vim</h2>
+<p><code>:'&lt;,'&gt;w !clip.exe</code>
+<code>:r !powershell.exe -Command Get-Clipboard</code></p>
+<h2>Change two vertically split windows to Horizontal / Vertical split</h2>
+<p>Ctrl-w Shift-j / Shift-k / Shift-h / Shift-l</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                     Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>. Theme is using <a href="https://github.com/getpelican/pelican-themes" target="_blank">cebong</a>.
+                </address><!-- /#about -->
+
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

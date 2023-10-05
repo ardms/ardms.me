@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>digital-garden - ["vim"</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <meta name="author" content="ardms" />
+        <meta name="copyright" content="ardms" />
+        <meta name="robots" content="noindex,follow">
+
+        <link rel="stylesheet" href="/theme/css/main.css" type="text/css" />
+
+        <!--[if IE]>
+                <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+        <!--[if lte IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="/css/ie.css"/>
+                <script src="/js/IE8.js" type="text/javascript"></script><![endif]-->
+
+        <!--[if lt IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="/css/ie6.css"/><![endif]-->
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="">digital-garden </a></h1>
+                <nav>
+                    <a href="/category/misc.html">misc</a>&nbsp;
+                </nav>
+        </header><!-- /#banner -->
+        
+        
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/neovim-setup.html">"Neovim setup"</a></h1> 
+<footer class="post-info">
+        <abbr class="published" title="2022-08-17T15:47:16+01:00">
+                Wed 17 August 2022
+        </abbr>
+<p>tags: <a href="/tag/vim.html">["vim"</a><a href="/tag/notes.html">"Notes"]</a></p></footer><!-- /.post-info --><p>Notes to help with seting up Neovim with the use of lua config files.</p>
+<h2>For installation under WSL2</h2>
+<p>Under WSL2 you have to do the following:</p>
+<h3>Install pyright</h3>
+<p><a href="https://github.com/Microsoft/pyright">pyright</a> is a type checker for python managed by Microsoft. 
+Probbaly the best way to install it is under a virtual env</p>
+<h3>Install nodejs</h3>
+<p>The default nodejs package under Ubuntu gave me an error so I had to manualy upgrade that. 
+use
+<code>curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -</code>
+to add the latest repositories to Ubuntu then 
+<code>sudo apt-get install -y nodejs</code></p>
+<h3>Install latest nvim instance</h3>
+<p>If going for the appimage option then first install <a href="https://docs.appimage.org/user-guide/troubleshooting/fuse.html">FUSE</a></p>
+<p><code>sudo apt-get install fuse libfuse2</code></p>
+<p>Then based on the information <a href="https://github.com/neovim/neovim/wiki/Installing-Neovim">here</a>
+do the following:</p>
+<div class="highlight"><pre><span></span><code><span class="n">curl</span><span class="w"> </span><span class="o">-</span><span class="n">LO</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">neovim</span><span class="o">/</span><span class="n">neovim</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">latest</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">nvim</span><span class="o">.</span><span class="n">appimage</span>
+<span class="n">chmod</span><span class="w"> </span><span class="n">u</span><span class="o">+</span><span class="n">x</span><span class="w"> </span><span class="n">nvim</span><span class="o">.</span><span class="n">appimage</span>
+<span class="o">./</span><span class="n">nvim</span><span class="o">.</span><span class="n">appimage</span>
+</code></pre></div>
+
+<h2>Configuration with lua</h2>
+<h3>Packer</h3>
+<p>First start with plugin manager. For now I use <a href="https://github.com/wbthomason/packer.nvim">Packer</a>.
+Main instruction are in the github repository.  </p>
+<h3>Language Server Protocol (LSP)</h3>
+<p>Nvim supports the Language Server Protocol (LSP), which means it acts as
+a client to LSP servers and includes a Lua framework <code>vim.lsp</code> for building
+enhanced LSP tools.</p>
+<p>It is considered a good practice to install <a href="https://github.com/neovim/nvim-lspconfig">nvim-lspconfig</a>.
+This plugin is only a collection of LSP configurations. </p>
+<p>We also need to install a language server for the language we need:
+* For <strong>Python</strong>. Using <a href="https://github.com/microsoft/pyright">pyright</a>. Just create a venv and <code>pip install pyright</code>
+Before lunching nvim we will need to activate the environment. </p>
+<h3>Auto-completion</h3>
+<p>For now I use <a href="https://github.com/hrsh7th/nvim-cmp">nvim-cmp</a></p>
+<p>This was a bit tricky to set up. </p>
+<div class="highlight"><pre><span></span><code>local capabilities = require(&#39;cmp_nvim_lsp&#39;).update_capabilities(vim.lsp.protocol.make_client_capabilities())
+</code></pre></div>
+
+<p>We then need the <code>capabilities</code> variable inside our call in <strong>LSP</strong></p>
+<div class="highlight"><pre><span></span><code>require&#39;lspconfig&#39;.pyright.setup{
+    capabilities = capabilities,
+}
+</code></pre></div>
+
+<p>Finally we need to set up cmp.</p>
+<div class="highlight"><pre><span></span><code><span class="n">vim</span><span class="p">.</span><span class="n">opt</span><span class="p">.</span><span class="n">completeopt</span><span class="o">=</span><span class="err">{</span><span class="ss">&quot;menu&quot;</span><span class="p">,</span><span class="ss">&quot;menuone&quot;</span><span class="p">,</span><span class="ss">&quot;noselect&quot;</span><span class="err">}</span>
+
+<span class="k">local</span><span class="w"> </span><span class="n">has_words_before</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">()</span>
+<span class="w">  </span><span class="k">local</span><span class="w"> </span><span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unpack</span><span class="p">(</span><span class="n">vim</span><span class="p">.</span><span class="n">api</span><span class="p">.</span><span class="n">nvim_win_get_cursor</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">~=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">vim</span><span class="p">.</span><span class="n">api</span><span class="p">.</span><span class="n">nvim_buf_get_lines</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="k">true</span><span class="p">)</span><span class="o">[</span><span class="n">1</span><span class="o">]</span><span class="err">:</span><span class="n">sub</span><span class="p">(</span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="p">)</span><span class="err">:</span><span class="k">match</span><span class="p">(</span><span class="ss">&quot;%s&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">nil</span>
+<span class="k">end</span>
+
+<span class="k">local</span><span class="w"> </span><span class="n">luasnip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">require</span><span class="p">(</span><span class="ss">&quot;luasnip&quot;</span><span class="p">)</span>
+<span class="k">local</span><span class="w"> </span><span class="n">cmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">require</span><span class="p">(</span><span class="ss">&quot;cmp&quot;</span><span class="p">)</span>
+
+<span class="n">cmp</span><span class="p">.</span><span class="n">setup</span><span class="p">(</span><span class="err">{</span>
+<span class="w"> </span><span class="n">snippet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span>
+<span class="w">      </span><span class="o">--</span><span class="w"> </span><span class="n">REQUIRED</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">must</span><span class="w"> </span><span class="n">specify</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">snippet</span><span class="w"> </span><span class="n">engine</span>
+<span class="w">      </span><span class="n">expand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+<span class="w">        </span><span class="o">--</span><span class="w"> </span><span class="n">vim</span><span class="p">.</span><span class="n">fn</span><span class="o">[</span><span class="n">&quot;vsnip#anonymous&quot;</span><span class="o">]</span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">body</span><span class="p">)</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="k">For</span><span class="w"> </span><span class="err">`</span><span class="n">vsnip</span><span class="err">`</span><span class="w"> </span><span class="n">users</span><span class="p">.</span>
+<span class="w">        </span><span class="n">require</span><span class="p">(</span><span class="s1">&#39;luasnip&#39;</span><span class="p">).</span><span class="n">lsp_expand</span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">body</span><span class="p">)</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="k">For</span><span class="w"> </span><span class="err">`</span><span class="n">luasnip</span><span class="err">`</span><span class="w"> </span><span class="n">users</span><span class="p">.</span>
+<span class="w">        </span><span class="o">--</span><span class="w"> </span><span class="n">require</span><span class="p">(</span><span class="s1">&#39;snippy&#39;</span><span class="p">).</span><span class="n">expand_snippet</span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">body</span><span class="p">)</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="k">For</span><span class="w"> </span><span class="err">`</span><span class="n">snippy</span><span class="err">`</span><span class="w"> </span><span class="n">users</span><span class="p">.</span>
+<span class="w">        </span><span class="o">--</span><span class="w"> </span><span class="n">vim</span><span class="p">.</span><span class="n">fn</span><span class="o">[</span><span class="n">&quot;UltiSnips#Anon&quot;</span><span class="o">]</span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">body</span><span class="p">)</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="k">For</span><span class="w"> </span><span class="err">`</span><span class="n">ultisnips</span><span class="err">`</span><span class="w"> </span><span class="n">users</span><span class="p">.</span>
+<span class="w">      </span><span class="k">end</span><span class="p">,</span>
+<span class="w">    </span><span class="err">}</span><span class="p">,</span>
+<span class="w">  </span><span class="n">mapping</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span>
+
+<span class="w">    </span><span class="o">--</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="n">Your</span><span class="w"> </span><span class="n">other</span><span class="w"> </span><span class="n">mappings</span><span class="w"> </span><span class="p">...</span>
+
+<span class="w">    </span><span class="o">[</span><span class="n">&quot;&lt;Tab&gt;&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cmp</span><span class="p">.</span><span class="n">mapping</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">fallback</span><span class="p">)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="n">cmp</span><span class="p">.</span><span class="n">visible</span><span class="p">()</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="n">cmp</span><span class="p">.</span><span class="n">select_next_item</span><span class="p">()</span>
+<span class="w">      </span><span class="n">elseif</span><span class="w"> </span><span class="n">luasnip</span><span class="p">.</span><span class="n">expand_or_jumpable</span><span class="p">()</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="n">luasnip</span><span class="p">.</span><span class="n">expand_or_jump</span><span class="p">()</span>
+<span class="w">      </span><span class="n">elseif</span><span class="w"> </span><span class="n">has_words_before</span><span class="p">()</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="n">cmp</span><span class="p">.</span><span class="n">complete</span><span class="p">()</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="w">        </span><span class="n">fallback</span><span class="p">()</span>
+<span class="w">      </span><span class="k">end</span>
+<span class="w">    </span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="ss">&quot;i&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;s&quot;</span><span class="w"> </span><span class="err">}</span><span class="p">),</span>
+
+<span class="w">    </span><span class="o">[</span><span class="n">&quot;&lt;S-Tab&gt;&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cmp</span><span class="p">.</span><span class="n">mapping</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">fallback</span><span class="p">)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="n">cmp</span><span class="p">.</span><span class="n">visible</span><span class="p">()</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="n">cmp</span><span class="p">.</span><span class="n">select_prev_item</span><span class="p">()</span>
+<span class="w">      </span><span class="n">elseif</span><span class="w"> </span><span class="n">luasnip</span><span class="p">.</span><span class="n">jumpable</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="n">luasnip</span><span class="p">.</span><span class="n">jump</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="w">        </span><span class="n">fallback</span><span class="p">()</span>
+<span class="w">      </span><span class="k">end</span>
+<span class="w">    </span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="ss">&quot;i&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;s&quot;</span><span class="w"> </span><span class="err">}</span><span class="p">),</span>
+
+<span class="w">    </span><span class="o">--</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="n">Your</span><span class="w"> </span><span class="n">other</span><span class="w"> </span><span class="n">mappings</span><span class="w"> </span><span class="p">...</span>
+<span class="w">  </span><span class="err">}</span><span class="p">,</span>
+<span class="w">  </span><span class="n">sources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span>
+<span class="w">      </span><span class="err">{</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;nvim_lua&quot;</span><span class="err">}</span><span class="p">,</span>
+<span class="w">      </span><span class="err">{</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;nvim_lsp&quot;</span><span class="err">}</span><span class="p">,</span>
+<span class="w">      </span><span class="err">{</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;luasnip&quot;</span><span class="err">}</span><span class="p">,</span>
+<span class="w">      </span><span class="err">{</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;buffer&quot;</span><span class="err">}</span><span class="p">,</span>
+<span class="w">  </span><span class="err">}</span><span class="p">,</span>
+<span class="w">  </span><span class="n">experimental</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span>
+<span class="w">      </span><span class="n">native_menu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span>
+
+<span class="w">  </span><span class="err">}</span><span class="p">,</span>
+<span class="w">  </span><span class="n">formatting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span>
+<span class="w">    </span><span class="nf">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span><span class="n">vim_item</span><span class="p">)</span>
+<span class="w">        </span><span class="n">vim_item</span><span class="p">.</span><span class="n">menu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="err">{</span>
+<span class="w">            </span><span class="n">buffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;[buf]&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="n">nvim_lsp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;[LSP]&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="n">nvim_lua</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;[api]&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="k">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;[path]&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="n">luasnip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;[snip]&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="n">gh_issues</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;[issues]&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="n">tn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;[TabNine]&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="err">}</span><span class="p">)</span><span class="o">[</span><span class="n">entry.source.name</span><span class="o">]</span>
+
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">vim_item</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">    </span><span class="err">}</span><span class="p">,</span>
+<span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="n">Your</span><span class="w"> </span><span class="n">other</span><span class="w"> </span><span class="n">configuration</span><span class="w"> </span><span class="p">...</span>
+<span class="err">}</span><span class="p">)</span>
+</code></pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+        
+
+ 
+            <li><article class="hentry">    
+                <header>
+                    <h3><a href="/vim-notes.html" rel="bookmark"
+                           title="Permalink to "Vim notes"">"Vim notes"</a></h3>
+                </header>
+                
+                <div class="entry-content">
+                <h1>General notes along the way for Vim usage</h1>
+<h2>Difference checking</h2>
+<p>If you want to check two files for differences in a vertical split </p>
+<div class="highlight"><pre><span></span><code>vertical diffsplit file1 file2
+</code></pre></div>
+
+<p>Then when you would like to change transfer changes of one file to the other <code>diffget</code> 
+or depending on which window you would …</p>
+                <a class="readmore" href="/vim-notes.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                     Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>. Theme is using <a href="https://github.com/getpelican/pelican-themes" target="_blank">cebong</a>.
+                </address><!-- /#about -->
+
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

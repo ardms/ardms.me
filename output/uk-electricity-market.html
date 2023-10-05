@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>"uk electricity market"</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <meta name="keywords" content="['notes', 'work'], misc" />
+        <meta name="category" content="misc" />
+        <meta name="description" content="Basic principals Electricity generators enter into contracts to sell electricity to retailers (who expect to use that electricity for their residential and commercial customers). These can be traded several years ahead, right through to the hour in question. In fact, it is not just generators selling to retailers: other participants …" />
+        <meta name="author" content="ardms" />
+        <meta name="copyright" content="ardms" />
+        <meta name="date" content="2023-06-23 00:00:00+01:00">
+        <meta name="robots" content="index,follow">
+
+        <link rel="stylesheet" href="/theme/css/main.css" type="text/css" />
+
+        <!--[if IE]>
+                <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+        <!--[if lte IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="/css/ie.css"/>
+                <script src="/js/IE8.js" type="text/javascript"></script><![endif]-->
+
+        <!--[if lt IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="/css/ie6.css"/><![endif]-->
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="">digital-garden </a></h1>
+                <nav>
+                    <a href="/category/misc.html">misc</a>&nbsp;
+                </nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="uk-electricity-market.html" rel="bookmark"
+           title="Permalink to "uk electricity market"">"uk electricity market"</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-06-23T00:00:00+01:00">
+                Fri 23 June 2023
+        </abbr>
+<p>tags: <a href="/tag/notes.html">['notes'</a><a href="/tag/work.html">'work']</a></p></footer><!-- /.post-info -->      <h1>Basic principals</h1>
+<p>Electricity generators enter into contracts to sell electricity to retailers
+(who expect to use that electricity for their residential and commercial
+customers). These can be traded several years ahead, right through to the hour
+in question. In fact, it is not just generators selling to retailers: other
+participants enter into these forward contracts to buy and sell electricity,
+including on exchanges.</p>
+<p>If we got to the period in question, and the amount of electricity generators
+supplied and retailers received, matched their contracts, all would be nice.
+The grid would be in balance (ignoring factors like congestion and transmission
+losses). The retailers would pay the generators the price they had agreed.</p>
+<p>In practice, customers are likely to consume more or less electricity than the
+retailers predicted, and generators may choose (or be forced by outages) to
+produce less than they’ve sold in their forward contracts. When this happens,
+National Grid’s balancing mechanism kicks in, and they buy or sell electricity
+to ensure a balance. Then, another organisation, Elexon, are responsible for
+calculating an imbalance price for each half hour. Any participants that have
+used more than they had bought (or generated less than they had sold) have to
+pay the imbalance price for the amount they are short. Any participants that
+have used less than they had bought (or generated more than they had sold)
+receive the imbalance price for the amount they are long (have excess).</p>
+<p>The imbalance price can be very volatile because it is expensive to store
+electricity. In 2018 it ranged from £-150/MWh (ie you had to pay if you
+produced too much electricity) to £990/MWh, so participants have a strong
+incentive to minimise their imbalances.</p>
+<h1>How is Electricity Traded on the Wholesale Market?</h1>
+<h2>Bilateral trading</h2>
+<p>Bilateral electricity trading refers to contracts between generators and
+suppliers for the purchase of electricity. Usually, bilateral trading of
+electricity is framed by some sort of master contract for a set period that
+establishes overarching trading conditions. Individual trading contracts then
+set the amounts of electricity to be traded and the trading price.</p>
+<p>To avoid market imbalances, generators inform the system operator (National
+Grid) of the volume of electricity traded before delivery.</p>
+<h2>Market trading</h2>
+<p>Electricity supply and demand is mostly matched on two exchanges when it comes
+to electricity delivered on the same day or the next day (the spot market): APX
+and N2EX. In this case, an auction process matches offers from generators
+(certain quantities of electricity at a certain price) and bids from suppliers
+or large consumers (expected consumption).</p>
+<p>Once more, avoiding market imbalances and grid capacity requires the network
+operator (National Grid) to be aware of traded volumes of electricity.</p>
+<h2>Long-term trading</h2>
+<p>Long-term trading of electricity mostly happens through electricity brokers.
+There are nine members of the London Energy Brokers’ Association: BGC Partners,
+Evolution Markets Ltd, GFI Group Inc, ICAP plc, Marex Spectron Group Ltd, PVM
+Oil Associates, Tradition Financial Services Ltd, Tullett Prebon Inc, Griffin
+Markets Limited).</p>
+<p>Long-term electricity trading prices are established less according to supply
+and demand than forecast market development: availability and cost of supply,
+forecast demand, etc.</p>
+<h1>Data streams and resources</h1>
+<p>Main data portal is <a href="https://developer.data.elexon.co.uk/api-details#api=prod-insol-insights-api&amp;operation=get-generation-actual-per-type-from-from-to-to">ELEXON BSC</a></p>
+<h1>Resources</h1>
+<p><a href="https://guylipman.medium.com/analysing-uk-electricity-prices-part-1-62890ea17713">Guy Lipman</a>
+<a href="https://www.goodenergy.co.uk/blog/why-does-the-price-of-gas-drive-electricity-prices-including-renewables/">Good Energy blog post</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                     Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>. Theme is using <a href="https://github.com/getpelican/pelican-themes" target="_blank">cebong</a>.
+                </address><!-- /#about -->
+
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

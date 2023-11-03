@@ -103,22 +103,23 @@ git mergetool
 ```
 This will open vim with three panes as shown under 
 
-  ╔═══════╦══════╦════════╗
-  ║       ║      ║        ║
-  ║ LOCAL ║ BASE ║ REMOTE ║
-  ║       ║      ║        ║
-  ╠═══════╩══════╩════════╣
-  ║                       ║
-  ║        MERGED         ║
-  ║                       ║
-  ╚═══════════════════════╝
+  |-------|------|--------|
+  |       |      |        |
+  | LOCAL | BASE | REMOTE |
+  |       |      |        |
+  |-------|------|--------|
+  |                       |
+  |        MERGED         |
+  |                       |
+  |-----------------------|
 
 These 4 views are
 
-    LOCAL: this is the file from the current branch
-    BASE: the common ancestor, how this file looked before both changes
-    REMOTE: the file you are merging into your branch
-    MERGED: the merge result; this is what gets saved in the merge commit and used in the future
+__LOCAL__: this is the file from the current branch
+__BASE__: the common ancestor, how this file looked before both changes
+__REMOTE__: the file you are merging into your branch
+__MERGED__: the merge result; this is what gets saved in the merge commit and used in the future
+
 You can edit __MERGED__ normally or you could just do `diffg RE/BA/LO` accordingly
 
 # Git working with submodules

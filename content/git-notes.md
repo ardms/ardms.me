@@ -104,7 +104,7 @@ git mergetool
 This will open vim with three panes as shown under 
 
   | LOCAL | BASE | REMOTE |
-  |-------|------|--------|
+  |-------|
   |        MERGED         |
 
 These 4 views are

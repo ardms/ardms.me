@@ -1,5 +1,5 @@
 ---
-title: "Esp32"
+title: "On becoming a manager"
 date: 2023-10-22
 lastmod: 2023-10-22
 tags: ["Personal"]

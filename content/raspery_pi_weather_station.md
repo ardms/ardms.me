@@ -1,19 +1,18 @@
-+++
-title = "Raspery_pi_weather_station"
-date = "2023-02-05T21:24:57Z"
-lastmod = "2023-02-05
-author = "Aris"
-authorTwitter = "" #do not include @
-cover = ""
-tags = ["IoT", ""]
-keywords = ["", ""]
-description = ""
-showFullContent = false
-readingTime = false
-hideComments = false
-color = "" #color from the theme settings
-+++
-
+---
+title: "Raspery_pi_weather_station"
+date: 2023-02-05
+lastmod: 2023-02-05
+author: "Aris"
+authorTwitter: "" #do not include @
+cover: ""
+tags: ["IoT", ""]
+keywords: ["", ""]
+description: ""
+showFullContent: false
+readingTime: false
+hideComments: false
+color: "" #color from the theme settings
+---
 
 # Intro 
 

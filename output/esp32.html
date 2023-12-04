@@ -1,85 +1,154 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>"Esp32"</title>
-        <meta charset="utf-8" />
-        <meta name="generator" content="Pelican" />
-        <meta name="keywords" content="["IoT"], misc" />
-        <meta name="category" content="misc" />
-        <meta name="description" content="Notes about ESP32 Have been trying to get involved with this board for a while now. Would like to know more abou it. Finall push to make start keepping some notes on this came from this post" />
-        <meta name="author" content="ardms" />
-        <meta name="copyright" content="ardms" />
-        <meta name="date" content="2023-02-05 21:09:08+00:00">
-        <meta name="robots" content="index,follow">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
 
-        <link rel="stylesheet" href="/theme/css/main.css" type="text/css" />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
 
-        <!--[if IE]>
-                <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
 
-        <!--[if lte IE 7]>
-                <link rel="stylesheet" type="text/css" media="all" href="/css/ie.css"/>
-                <script src="/js/IE8.js" type="text/javascript"></script><![endif]-->
 
-        <!--[if lt IE 7]>
-                <link rel="stylesheet" type="text/css" media="all" href="/css/ie6.css"/><![endif]-->
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/solid.css">
+
+
+
+
+
+
+
+ 
+
+<meta name="author" content="ardms" />
+<meta name="description" content="Notes about ESP32 Have been trying to get involved with this board for a while now. Would like to know more abou it. Finall push to make start keepping some notes on this came from this post" />
+<meta name="keywords" content="[&#34;IoT&#34;]">
+
+
+  <meta property="og:site_name" content="digital-garden"/>
+  <meta property="og:title" content="&#34;Esp32&#34;"/>
+  <meta property="og:description" content="Notes about ESP32 Have been trying to get involved with this board for a while now. Would like to know more abou it. Finall push to make start keepping some notes on this came from this post"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="/esp32.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2023-02-05 21:09:08+00:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="/author/ardms.html">
+  <meta property="article:section" content="misc"/>
+  <meta property="article:tag" content="[&#34;IoT&#34;]"/>
+  <meta property="og:image" content="">
+
+  <title>digital-garden &ndash; &#34;Esp32&#34;</title>
+
 
 </head>
+<body class="light-theme">
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="">digital-garden </a></h1>
-                <nav>
-                    <a href="/category/misc.html">misc</a>&nbsp;
-                </nav>
-        </header><!-- /#banner -->
-<section id="content" class="body">
-  <article>
-    <header>
-      <h1 class="entry-title">
-        <a href="esp32.html" rel="bookmark"
-           title="Permalink to "Esp32"">"Esp32"</a></h1>
-    </header>
+<aside>
+  <div>
+    <a href="/">
+      <img src="/theme/img/profile.png" alt="" title="">
+    </a>
 
-    <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2023-02-05T21:09:08+00:00">
-                Sun 05 February 2023
-        </abbr>
-<p>tags: <a href="/tag/iot.html">["IoT"]</a></p></footer><!-- /.post-info -->      <h1>Notes about ESP32</h1>
+    <h1>
+      <a href="/"></a>
+    </h1>
+
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="https://getpelican.com/" >Pelican</a>
+          </li>
+          <li>
+            <a target="_self" href="https://www.python.org/" >Python.org</a>
+          </li>
+          <li>
+            <a target="_self" href="https://palletsprojects.com/p/jinja/" >Jinja2</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-You can add links in your config file"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-You can add links in your config file"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-Another social link"
+           href="#"
+           target="_blank">
+          <i class="fa-brands fa-Another social link"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="esp32">"Esp32"</h1>
+    <p>
+      Posted on Sun 05 February 2023 in <a href="/category/misc.html">misc</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <h1>Notes about ESP32</h1>
 <p>Have been trying to get involved with this board for a while now. Would like to know more abou it. </p>
 <p>Finall push to make start keepping some notes on this came from <a href="https://eitherway.io/posts/esp32-buyers-guide/">this</a> post </p>
-    </div><!-- /.entry-content -->
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="/tag/iot.html">["IoT"]</a>
+    </p>
+  </div>
 
-  </article>
-</section>
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="https://getpelican.com/">Pelican</a></li>
-                            <li><a href="https://www.python.org/">Python.org</a></li>
-                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-                            <li><a href="/" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                     Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>. Theme is using <a href="https://github.com/getpelican/pelican-themes" target="_blank">cebong</a>.
-                </address><!-- /#about -->
 
-        </footer><!-- /#contentinfo -->
 
+
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " digital-garden ",
+  "url" : "",
+  "image": "",
+  "description": ""
+}
+</script>
 </body>
 </html>

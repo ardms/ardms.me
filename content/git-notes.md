@@ -47,7 +47,7 @@ Host github.com-BayWa github account
 * Then depending on which key you would like to use you should either do:
 'git clone git@github.com-BayWa:your-github-account/private-project-repo.git'
 or 
-'git remote add origin git@github.com-BayWa:CODEZ-UP/Check-React-Version-Custom-Hooks.git`
+`git remote add origin git@github.com-BayWa:CODEZ-UP/Check-React-Version-Custom-Hooks.git`
 or if the repository is already conected to remote and you just want to alter the url:
 `git remote set-url origin git@github.com-BayWa:username/repo.git`
 
@@ -55,13 +55,18 @@ or if the repository is already conected to remote and you just want to alter th
 
 ## Git config
 
-* `git config --global pull.ff only`
-* `git config --local user.name <your name>`
+` git config --global pull.ff only`
+
+` git config --local user.name <your name>`
+
 
 ## Git commands 
 
-* `git clone --recurce-submodules -b <branchname> <remote-repo-url>`
-* 
+```
+git clone --recurce-submodules -b <branchname> <remote-repo-url>
+
+```
+
 
 # Git Pull and all the hell breaks loose
 
@@ -69,7 +74,8 @@ or if the repository is already conected to remote and you just want to alter th
 * Git will only perfrom the _merge_ when there are no _uncommited_ changes. otherwise you will probably get something like:
 __error: Your local changes to the following files would be overwritten by merge: ... __
 * Overright local changes with remote origin: 
-```
+
+```bash
 git fetch
 git reset --hard HEAD
 git merge origin/$CURRENT_BRANCH
@@ -81,6 +87,34 @@ git stash
 git merge origin/$CURRENT_BRANCH
 git stash pop
 ```
+## Working with conflicts and __mergetool__
+
+You can configure mergetool to use vim (or nvim)
+
+```bash
+git config merge.tool vimdiff
+git config merge.conflictstyle diff3
+git config mergetool.prompt false
+```
+Then you will always need to commit your local changes firts and then fetch. After this you can just user
+
+```
+git mergetool
+```
+This will open vim with three panes as shown under 
+
+  | LOCAL | BASE | REMOTE |
+  | --- | --- | --- |
+  | MERGED |
+
+These 4 views are
+
+__LOCAL__: this is the file from the current branch
+__BASE__: the common ancestor, how this file looked before both changes
+__REMOTE__: the file you are merging into your branch
+__MERGED__: the merge result; this is what gets saved in the merge commit and used in the future
+
+You can edit __MERGED__ normally or you could just do `diffg RE/BA/LO` accordingly
 
 # Git working with submodules
 
@@ -95,7 +129,5 @@ And to update the subodule
 ```
 git submodule update --init --recursive
 ```
-
-
 
 # Git pull requests

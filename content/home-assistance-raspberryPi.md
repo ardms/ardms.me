@@ -51,6 +51,10 @@ Once the above is completed you should be able to connect to home assistance ins
 
 `http://<host>:8123`
 
+If the service is not running try restarting your __Dockser__ with 
+
+`docker restart homeassisnatnt`
+
 # Home assistance setup
 
 ## Set up electricity smart meter readings

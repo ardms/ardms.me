@@ -53,7 +53,7 @@ Once the above is completed you should be able to connect to home assistance ins
 
 If the service is not running try restarting your __Dockser__ with 
 
-`docker restart homeassisnatnt`
+`docker restart homeassistant`
 
 # Home assistance setup
 

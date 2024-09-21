@@ -53,5 +53,15 @@ Once you have the output then  you will need to add the folloing to your .config
 
 pactl set-sink-volume @DEFAULT_SINK@ +5%
 
+## VPN connection
 
+### NordVPN
+For now I'm using NordVPN. One easy way to set this up in Linux is to use a Token
+For instalation nordvpn executable use [link](https://support.nordvpn.com/hc/en-us/articles/20196094470929-Installing-NordVPN-on-Linux-distributions?_gl=1*3tyuwm*_gcl_au*MTYzNjU0NTQ0MC4xNzI2OTQ5NTAz*FPAU*MTYzNjU0NTQ0MC4xNzI2OTQ5NTAz*_ga*MzMwMTkzODkyLjE2OTY3ODAxMTc.*_ga_LEXMJ1N516*MTcyNjk0OTUwMy42LjEuMTcyNjk0OTY4OS41NS4wLjA.)
+To great and use the token use [link](https://support.nordvpn.com/hc/en-us/articles/20286980309265-How-to-use-a-token-with-NordVPN-on-Linux)
 
+Once the token is generated then just use
+```
+nordvpn login --token <token>
+```
+TODO set up autoconnect on boot

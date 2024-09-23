@@ -66,10 +66,16 @@ Once the token is generated then just use
 ```
 nordvpn login --token <token>
 ```
+
 To autologin on startup
 ```
 nordvpn set autologin Greece Athens
 ```
+
+A small problem that VPN creates is that I was not able to __ssh__ into the
+raspberrypi from my local network any more. to soleve this issue I have used
+the
+[meshnet](https://meshnet.nordvpn.com/getting-started/how-to-start-using-meshnet/using-meshnet-on-linux)
 
 ## Start Firefox on startup
 

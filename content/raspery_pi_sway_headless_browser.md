@@ -47,7 +47,7 @@ First you need to find the display you are using. You will need to do the follow
 
 `swaymsg -t get_outputs`
 
-Once you have the output then  you will need to add the folloing to your .config:
+Once you have the output then  you will need to add the following to your .config:
 
 `output HDMI-A-1 scale 3`
 
@@ -73,9 +73,14 @@ nordvpn set autologin Greece Athens
 ```
 
 A small problem that VPN creates is that I was not able to __ssh__ into the
-raspberrypi from my local network any more. to soleve this issue I have used
+raspberrypi from my local network any more. To solve this issue I have used
 the
 [meshnet](https://meshnet.nordvpn.com/getting-started/how-to-start-using-meshnet/using-meshnet-on-linux)
+by setting
+```
+nordvpn set meshnet on
+```
+Meshnet will be set on and remain on even after a reboot.
 
 ## Start Firefox on startup
 

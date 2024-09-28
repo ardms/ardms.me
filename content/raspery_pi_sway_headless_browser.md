@@ -93,3 +93,12 @@ execute Firefox
 ```
 
 Hope Raspberrypi I'm using now (5 2GB) is able to stream....
+
+## Set up wlogout
+Found this handy wayland logout menu [wlogout](https://github.com/ArtsyMacaw/wlogout)
+Setup is really easy. Just copy everything from `/etc/wlogout/` into `~/.config/wlogout/`
+Then add into `~/.config/sway/config` the following
+```
+bindsym $mod+Shift+e exec wlogout
+```
+

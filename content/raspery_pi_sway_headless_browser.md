@@ -82,6 +82,9 @@ nordvpn set meshnet on
 ```
 Meshnet will be set on and remain on even after a reboot.
 
+### Disable ssh login as root
+Because of the above it will be wise to disable login as root. To do that
+
 ## Start Firefox on startup
 
 Edit `.config/sway/config` and add the following

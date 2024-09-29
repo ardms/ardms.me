@@ -1,7 +1,7 @@
 ---
 title: "Vim notes"
 date: 2022-08-16
-lastmod: 2022-08-16
+modified: 2024-09-29
 draft: false
 tags: ["Programming","vim","Notes"]
 categories: ["Programming"]
@@ -24,7 +24,10 @@ To enable you start with `set:spell` to navigate through spell errors `]s` and `
 
 ## grep and search in files
 
-Use `vim text_to_search dir` use `**/` to search in all directories and subdirectories except those exclude by wildignore in the __vimrc__ file
+Use `vim text_to_search dir` use `**/` to search in all directories and
+subdirectories except those exclude by wildignore in the __vimrc__ file
+
+All results will be saved in a __QuickFix__ list that you can retrieve by using `copen`. You can also do a search and replace in the entier list by `:cdo %s/<search term>/<replace term>/cg`
 
 ## Installing in Linux or WLS
 
@@ -43,3 +46,4 @@ Use `vim text_to_search dir` use `**/` to search in all directories and subdirec
 ## Change two vertically split windows to Horizontal / Vertical split
 
 Ctrl-w Shift-j / Shift-k / Shift-h / Shift-l
+

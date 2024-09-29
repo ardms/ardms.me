@@ -1,7 +1,7 @@
 ---
 title: "How to google drive on Linux"
 date: 2024-06-27
-lastmod: 2024-06-27
+modified: 2024-09-29
 draft: false
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "home-assistance-raspberryPi"
 date: 2023-09-16
-lastmod: 2023-09-17
+modified: 2024-09-29
 draft: false 
 tags: ['personal progects']
 ---

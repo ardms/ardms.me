@@ -1,7 +1,7 @@
 ---
 title: "sway-setup"
 date: 2022-12-16
-lastmod: 2022-12-29
+modified: 2024-09-29
 draft: false
 tags: ["Programming","Linux","Notes"]
 categories: ["Linux"]

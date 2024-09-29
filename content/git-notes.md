@@ -1,7 +1,7 @@
 ---
 title: "Git Notes"
 date: 2022-10-13T08:28:55+01:00
-lastmod: 2023-06-23
+modified: 2024-09-29
 draft: false 
 tags: ['notes','git']
 ---

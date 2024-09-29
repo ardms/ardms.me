@@ -1,7 +1,7 @@
 ---
 title: "uk electricity market"
 date: 2023-06-23
-lastmod: 2023-09-14
+modified: 2024-09-29
 draft: false 
 tags: ['notes','work']
 ---

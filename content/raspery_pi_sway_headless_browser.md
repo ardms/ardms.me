@@ -1,7 +1,7 @@
 ---
 title: "Raspbery Pi Sway headless browser"
 date: 2024-02-11
-lastmod: 2024-02-11
+modified: 2024-09-29
 draft: True
 tags: ['personal progects']
 ---

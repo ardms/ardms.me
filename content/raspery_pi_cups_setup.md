@@ -1,8 +1,8 @@
 ---
-title: "Raspbery Pi Sway headless browser"
+title: "Raspbery Pi CUPS setup"
 date: 2024-02-11
-lastmod: 2024-02-11
-draft: True
+modified: 2024-09-29
+draft: False
 tags: ['personal progects']
 ---
 
@@ -18,7 +18,7 @@ sudo apt install cups
 ```
 
 # Configure cupsd.conf
-First backup the /ect/cups/cupsd.conf and then change the following
+First backup /ect/cups/cupsd.conf and then change the following
 
 ```
 LogLevel warn

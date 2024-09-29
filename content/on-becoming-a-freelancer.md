@@ -1,7 +1,7 @@
 ---
 title: "Becoming a Freelancer"
 date: 2024-01-01
-lastmod: 2024-01-01
+modified: 2024-09-29
 draft: false
 ---
 

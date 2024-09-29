@@ -1,7 +1,7 @@
 ---
 title: "thoughts on Roadmaps"
 date: 2023-09-21
-lastmod: 2023-09-21
+modified: 2024-09-29
 draft: false 
 tags: ['work']
 ---

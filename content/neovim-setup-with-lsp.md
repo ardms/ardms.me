@@ -1,7 +1,7 @@
 ---
 title: "Neovim setup"
 date: 2022-08-17T15:47:16+01:00
-lastmod: 2022-08-23-T17:55:51se 
+modified: 2024-09-29
 tags: ["vim", "Notes"]
 ---
 

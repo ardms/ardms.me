@@ -1,7 +1,7 @@
 ---
 title: "Raspery_pi_weather_station"
 date: 2023-02-05
-lastmod: 2023-02-05
+modified: 2024-09-29
 author: "Aris"
 authorTwitter: "" #do not include @
 cover: ""

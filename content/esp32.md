@@ -1,7 +1,7 @@
 ---
 title: "Esp32"
 date: 2023-02-05T21:09:08Z
-lastmod: 2023-02-05
+modified: 2024-09-29
 tags: ["IoT"]
 draft: true
 ---

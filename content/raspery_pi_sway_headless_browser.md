@@ -53,7 +53,7 @@ Once you have the output then  you will need to add the following to your .confi
 
 pactl set-sink-volume @DEFAULT_SINK@ +5%
 
-I finally decided to change scree resolution and not scale. Scaling had some anoying artifacts including mouse cursor not displaying properly
+I finally decided to change scree resolution and not scale. I was having the problem explained [here](https://blogs.kde.org/2024/10/09/cursor-size-problems-in-wayland-explained/) Scaling had some anoying artifacts including mouse cursor not displaying properly
 
 ## VPN connection
 

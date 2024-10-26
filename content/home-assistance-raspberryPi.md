@@ -1,7 +1,7 @@
 ---
 title: "home-assistance-raspberryPi"
 date: 2023-09-16
-modified: 2024-09-29
+modified: 2024-10-26
 draft: false 
 tags: ['personal progects']
 ---
@@ -13,6 +13,9 @@ tags: ['personal progects']
 I thought this would be easier. I have an old raspberryPi 3 that I use for several tasks like having a network printer with [CUPS](https://www.cups.org/) having a small display to show weather and bus times. Because of that I didn't want to flash the [Home Assisntant Operating System](https://www.home-assistant.io/installation/raspberrypi) but rather an instance of Home Assistant that would run in a container inside the [Raspberry Pi OS Lite ](https://www.raspberrypi.com/software/operating-systems/). 
 
 I first followed the instructions and installed Home Assistant Container only to find out that this is not what I wanted since it is not allowing you to install add-ons so after looking into the [guide](https://www.home-assistant.io/installation/) I understood that what I needed was [Home Assistant Supervised](https://community.home-assistant.io/t/installing-home-assistant-supervised-on-a-raspberry-pi-using-debian-12/247116)
+
+## VPN configuration
+It so happens that this RaspberryPi is used for my [VPN streaming service](./raspery_pi_sway_headless_browser.md). This means that I had to find a way to have both VPN and local network discoverability. To my knowledge split tunneling is not possible with NordVPN that is the service I'm using. Will try [whitelisting](https://nordvpn.com/cybersecurity/glossary/allowlisting/)
 
 ## Docker installation
 
